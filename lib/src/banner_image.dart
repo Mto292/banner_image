@@ -18,6 +18,8 @@ class BannerImage extends StatefulWidget {
   final Duration? timerDuration;
   final Curve? curve;
   final double? indicatorRadius;
+  final bool autoPlay;
+  final Axis scrollDirection;
 
   const BannerImage({
     Key? key,
@@ -36,6 +38,8 @@ class BannerImage extends StatefulWidget {
     this.timerDuration,
     this.curve,
     this.indicatorRadius,
+    this.autoPlay = false,
+    this.scrollDirection = Axis.horizontal,
   }) : super(key: key);
 
   @override

@@ -11,6 +11,7 @@ class BannerImageView extends BannerImageViewModel {
           aspectRatio: widget.aspectRatio ?? 24 / 9,
           child: PageView.builder(
             controller: controller,
+            scrollDirection: widget.scrollDirection,
             onPageChanged: onPageChange,
             itemBuilder: (BuildContext context, int index) {
               index = getIndex(index);
