@@ -12,7 +12,7 @@ Add the module to your project ``pubspec.yaml``:
 ...
 dependencies:
  ...
- banner_image: ^1.0.0
+ banner_image: ^1.0.1
 ...
 ```
 And install it using ``flutter packages get`` on your project folder. After that, just import the module and use it:
@@ -31,4 +31,4 @@ BannerImage(
   },
 ),
 ```
-![vertical](doc/horizontal.gif)
+![horizontal](doc/horizontal.gif)
