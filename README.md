@@ -31,4 +31,4 @@ BannerImage(
   },
 ),
 ```
-![vertical](doc/vertical.gif)
+![vertical](doc/horizontal.gif)
