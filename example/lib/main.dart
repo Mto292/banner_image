@@ -82,6 +82,7 @@ class BannerScreen extends StatefulWidget {
 }
 
 class _BannerScreenState extends State<BannerScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,6 +99,34 @@ class _BannerScreenState extends State<BannerScreen> {
               imageUrlList: list,
               selectedIndicatorColor: Colors.red,
               autoPlay: true,
+              onTap: (){
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text('On Tap'),
+                ));
+              },
+            ),
+            const SizedBox(height: 50),
+            BannerImage(
+              itemLength: list.length,
+              imageUrlList: list,
+              selectedIndicatorColor: Colors.red,
+              autoPlay: true,
+              onTap: (){
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text('On Tap'),
+                ));
+              },
+            ),
+            const SizedBox(height: 50),
+            BannerImage(
+              itemLength: list.length,
+              imageUrlList: list,
+              selectedIndicatorColor: Colors.red,
+              onTap: (){
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text('On Tap'),
+                ));
+              },
             ),
           ],
         ),

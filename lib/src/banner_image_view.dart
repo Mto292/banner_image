@@ -15,20 +15,23 @@ class BannerImageView extends BannerImageViewModel {
             onPageChanged: onPageChange,
             itemBuilder: (BuildContext context, int index) {
               index = getIndex(index);
-              return widget.children?[index] ??
-                  Container(
-                    margin: widget.padding ??
-                        const EdgeInsets.symmetric(horizontal: 15),
-                    decoration: widget.cardDecoration ??
-                        BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                    clipBehavior: Clip.hardEdge,
-                    child: Image.network(
-                      widget.imageUrlList![index],
-                      fit: widget.fit ?? BoxFit.cover,
+              return GestureDetector(
+                onTap: widget.onTap,
+                child: widget.children?[index] ??
+                    Container(
+                      margin: widget.padding ??
+                          const EdgeInsets.symmetric(horizontal: 15),
+                      decoration: widget.cardDecoration ??
+                          BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                      clipBehavior: Clip.hardEdge,
+                      child: Image.network(
+                        widget.imageUrlList![index],
+                        fit: widget.fit ?? BoxFit.cover,
+                      ),
                     ),
-                  );
+              );
             },
           ),
         ),

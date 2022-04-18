@@ -20,6 +20,7 @@ class BannerImage extends StatefulWidget {
   final double? indicatorRadius;
   final bool autoPlay;
   final Axis scrollDirection;
+  final GestureTapCallback? onTap;
 
   const BannerImage({
     Key? key,
@@ -40,6 +41,7 @@ class BannerImage extends StatefulWidget {
     this.indicatorRadius,
     this.autoPlay = false,
     this.scrollDirection = Axis.horizontal,
+    this.onTap,
   }) : super(key: key);
 
   @override

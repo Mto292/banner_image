@@ -16,7 +16,7 @@ abstract class BannerImageViewModel extends State<BannerImage> {
     previousIndex = length;
     if (widget.autoPlay) {
       _timer = RestartableTimer(
-        widget.timerDuration ?? const Duration(seconds: 1),
+        widget.timerDuration ?? const Duration(seconds: 5),
         nextPage,
       );
     }
