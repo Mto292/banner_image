@@ -20,7 +20,7 @@ class BannerImage extends StatefulWidget {
   final double? indicatorRadius;
   final bool autoPlay;
   final Axis scrollDirection;
-  final GestureTapCallback? onTap;
+  final Function(int)? onTap;
 
   const BannerImage({
     Key? key,

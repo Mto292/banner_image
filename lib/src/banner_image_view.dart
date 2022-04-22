@@ -16,7 +16,9 @@ class BannerImageView extends BannerImageViewModel {
             itemBuilder: (BuildContext context, int index) {
               index = getIndex(index);
               return GestureDetector(
-                onTap: widget.onTap,
+                onTap: widget.onTap == null
+                    ? null
+                    : () => widget.onTap!(index),
                 child: widget.children?[index] ??
                     Container(
                       margin: widget.padding ??
