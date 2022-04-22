@@ -31,4 +31,6 @@ BannerImage(
   },
 ),
 ```
-![horizontal](doc/horizontal.gif)
+
+![horizontal](https://user-images.githubusercontent.com/49743631/164677743-b4559be7-08af-4fa4-95bc-de8405bd161f.gif)
+
