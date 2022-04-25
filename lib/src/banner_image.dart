@@ -22,6 +22,8 @@ class BannerImage extends StatefulWidget {
   final Function(int)? onTap;
   final BorderRadius? borderRadius;
   final Clip? clipBehavior;
+  final ImageErrorWidgetBuilder? errorBuilder;
+  final ImageLoadingBuilder? loadingBuilder;
 
   const BannerImage({
     Key? key,
@@ -44,6 +46,7 @@ class BannerImage extends StatefulWidget {
     this.scrollDirection = Axis.horizontal,
     this.onTap,
     this.clipBehavior,
+    this.errorBuilder, this.loadingBuilder,
   }) : super(key: key);
 
   @override

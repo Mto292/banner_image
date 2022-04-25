@@ -28,6 +28,8 @@ class BannerImageView extends BannerImageViewModel {
                         Image.network(
                           widget.imageUrlList![index],
                           fit: widget.fit ?? BoxFit.cover,
+                          errorBuilder: widget.errorBuilder,
+                          loadingBuilder: widget.loadingBuilder,
                         ),
                   );
                 },
