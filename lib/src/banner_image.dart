@@ -11,7 +11,6 @@ class BannerImage extends StatefulWidget {
   final bool withOutIndicator;
   final Color? selectedIndicatorColor;
   final Color? indicatorColor;
-  final Decoration? cardDecoration;
   final EdgeInsetsGeometry? padding;
   final BoxFit? fit;
   final Duration? duration;
@@ -21,6 +20,8 @@ class BannerImage extends StatefulWidget {
   final bool autoPlay;
   final Axis scrollDirection;
   final Function(int)? onTap;
+  final BorderRadius? borderRadius;
+  final Clip? clipBehavior;
 
   const BannerImage({
     Key? key,
@@ -32,7 +33,7 @@ class BannerImage extends StatefulWidget {
     this.withOutIndicator = false,
     this.selectedIndicatorColor,
     this.indicatorColor,
-    this.cardDecoration,
+    this.borderRadius,
     this.padding,
     this.fit,
     this.duration,
@@ -42,6 +43,7 @@ class BannerImage extends StatefulWidget {
     this.autoPlay = false,
     this.scrollDirection = Axis.horizontal,
     this.onTap,
+    this.clipBehavior,
   }) : super(key: key);
 
   @override

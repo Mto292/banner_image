@@ -97,7 +97,6 @@ class _BannerScreenState extends State<BannerScreen> {
         child: Column(
           children: [
             BannerImage(
-              cardDecoration: const BoxDecoration(),
               padding: const EdgeInsets.only(),
               itemLength: list.length,
               imageUrlList: list,
@@ -115,6 +114,7 @@ class _BannerScreenState extends State<BannerScreen> {
               imageUrlList: list,
               selectedIndicatorColor: Colors.red,
               autoPlay: true,
+              borderRadius: BorderRadius.circular(8),
               onTap: (int index) {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content: Text('On Tap' + index.toString()),
@@ -125,6 +125,7 @@ class _BannerScreenState extends State<BannerScreen> {
             BannerImage(
               itemLength: list.length,
               imageUrlList: list,
+              borderRadius: BorderRadius.circular(8),
               selectedIndicatorColor: Colors.red,
               onTap: (int index) {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -157,7 +158,6 @@ class _HorizontalBannerScreenState extends State<HorizontalBannerScreen> {
         child: Column(
           children: [
             BannerImage(
-              cardDecoration: const BoxDecoration(),
               padding: const EdgeInsets.only(),
               itemLength: list.length,
               imageUrlList: list,
@@ -169,6 +169,7 @@ class _HorizontalBannerScreenState extends State<HorizontalBannerScreen> {
             BannerImage(
               itemLength: list.length,
               imageUrlList: list,
+              borderRadius: BorderRadius.circular(8),
               selectedIndicatorColor: Colors.blue,
               indicatorColor: Colors.green.shade100,
               scrollDirection: Axis.vertical,
@@ -177,6 +178,7 @@ class _HorizontalBannerScreenState extends State<HorizontalBannerScreen> {
             BannerImage(
               aspectRatio: 2,
               itemLength: list.length,
+              borderRadius: BorderRadius.circular(8),
               imageUrlList: list,
               selectedIndicatorColor: Colors.red,
               withOutIndicator: true,
@@ -186,6 +188,7 @@ class _HorizontalBannerScreenState extends State<HorizontalBannerScreen> {
             BannerImage(
               aspectRatio: 20 / 10,
               itemLength: list.length,
+              borderRadius: BorderRadius.circular(8),
               imageUrlList: list,
               selectedIndicatorColor: Colors.red,
               scrollDirection: Axis.vertical,
@@ -218,13 +221,13 @@ class _SliderScreenState extends State<SliderScreen> {
             BannerImage(
               aspectRatio: MediaQuery.of(context).size.width /
                   (MediaQuery.of(context).size.height),
-              cardDecoration: const BoxDecoration(),
               padding: const EdgeInsets.only(),
               itemLength: list.length,
               imageUrlList: list,
               selectedIndicatorColor: Colors.red,
               autoPlay: false,
               withOutIndicator: true,
+              fit: BoxFit.scaleDown,
             ),
           ],
         ),

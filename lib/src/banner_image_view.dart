@@ -7,34 +7,32 @@ class BannerImageView extends BannerImageViewModel {
     assert(widget.imageUrlList != null || widget.children != null);
     return Column(
       children: [
-        AspectRatio(
-          aspectRatio: widget.aspectRatio ?? 24 / 9,
-          child: PageView.builder(
-            controller: controller,
-            scrollDirection: widget.scrollDirection,
-            onPageChanged: onPageChange,
-            itemBuilder: (BuildContext context, int index) {
-              index = getIndex(index);
-              return GestureDetector(
-                onTap: widget.onTap == null
-                    ? null
-                    : () => widget.onTap!(index),
-                child: widget.children?[index] ??
-                    Container(
-                      margin: widget.padding ??
-                          const EdgeInsets.symmetric(horizontal: 15),
-                      decoration: widget.cardDecoration ??
-                          BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                      clipBehavior: Clip.hardEdge,
-                      child: Image.network(
-                        widget.imageUrlList![index],
-                        fit: widget.fit ?? BoxFit.cover,
-                      ),
-                    ),
-              );
-            },
+        Padding(
+          padding: widget.padding ?? const EdgeInsets.symmetric(horizontal: 15),
+          child: ClipRRect(
+            borderRadius: widget.borderRadius ?? const BorderRadius.only(),
+            clipBehavior: widget.clipBehavior ?? Clip.antiAlias,
+            child: AspectRatio(
+              aspectRatio: widget.aspectRatio ?? 24 / 9,
+              child: PageView.builder(
+                controller: controller,
+                scrollDirection: widget.scrollDirection,
+                onPageChanged: onPageChange,
+                itemBuilder: (BuildContext context, int index) {
+                  index = getIndex(index);
+                  return GestureDetector(
+                    onTap: widget.onTap == null
+                        ? null
+                        : () => widget.onTap!(index),
+                    child: widget.children?[index] ??
+                        Image.network(
+                          widget.imageUrlList![index],
+                          fit: widget.fit ?? BoxFit.cover,
+                        ),
+                  );
+                },
+              ),
+            ),
           ),
         ),
         widget.withOutIndicator
