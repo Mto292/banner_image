@@ -21,13 +21,13 @@ class MyApp extends StatelessWidget {
 }
 
 final list = [
-  'https://via.placeholder.com/2400x900?text=2400x900 index: 0',
-  'https://via.placeholder.com/2400x900/344c98?text=2400x900 index: 1',
-  'https://via.placeholder.com/2400x900/ffc72c?text=2400x900 index: 2',
-  'https://via.placeholder.com/2400x900/B71C1C?text=2400x900 index: 3',
-  'https://via.placeholder.com/2400x900/ccdafb?text=2400x900 index: 4',
-  'https://via.placeholder.com/2400x900/464250?text=2400x900 index: 5',
-  'https://via.placeholder.com/2400x900/27356F?text=2400x900 index: 6'
+  'assets/0.png',
+  'assets/1.png',
+  'assets/2.png',
+  'assets/3.png',
+  'assets/4.png',
+  'assets/5.png',
+  'assets/6.png'
 ];
 
 class MyHomePage extends StatefulWidget {
@@ -102,6 +102,10 @@ class _BannerScreenState extends State<BannerScreen> {
               imageUrlList: list,
               selectedIndicatorColor: Colors.red,
               autoPlay: true,
+              children: List.generate(list.length, (index) => Image.asset(
+                list[index],
+                fit: BoxFit.cover,
+              ),),
               onTap: (int index) {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content: Text('On Tap' + index.toString()),
@@ -111,7 +115,10 @@ class _BannerScreenState extends State<BannerScreen> {
             const SizedBox(height: 50),
             BannerImage(
               itemLength: list.length,
-              imageUrlList: list,
+              children: List.generate(list.length, (index) => Image.asset(
+                list[index],
+                fit: BoxFit.cover,
+              ),),
               selectedIndicatorColor: Colors.red,
               autoPlay: true,
               borderRadius: BorderRadius.circular(8),
@@ -124,7 +131,10 @@ class _BannerScreenState extends State<BannerScreen> {
             const SizedBox(height: 50),
             BannerImage(
               itemLength: list.length,
-              imageUrlList: list,
+              children: List.generate(list.length, (index) => Image.asset(
+                list[index],
+                fit: BoxFit.cover,
+              ),),
               borderRadius: BorderRadius.circular(8),
               selectedIndicatorColor: Colors.red,
               onTap: (int index) {
@@ -160,7 +170,10 @@ class _HorizontalBannerScreenState extends State<HorizontalBannerScreen> {
             BannerImage(
               padding: const EdgeInsets.only(),
               itemLength: list.length,
-              imageUrlList: list,
+              children: List.generate(list.length, (index) => Image.asset(
+                list[index],
+                fit: BoxFit.cover,
+              ),),
               selectedIndicatorColor: Colors.red,
               autoPlay: true,
               scrollDirection: Axis.vertical,
@@ -168,7 +181,10 @@ class _HorizontalBannerScreenState extends State<HorizontalBannerScreen> {
             const SizedBox(height: 15),
             BannerImage(
               itemLength: list.length,
-              imageUrlList: list,
+              children: List.generate(list.length, (index) => Image.asset(
+                list[index],
+                fit: BoxFit.cover,
+              ),),
               borderRadius: BorderRadius.circular(8),
               selectedIndicatorColor: Colors.blue,
               indicatorColor: Colors.green.shade100,
@@ -179,7 +195,10 @@ class _HorizontalBannerScreenState extends State<HorizontalBannerScreen> {
               aspectRatio: 2,
               itemLength: list.length,
               borderRadius: BorderRadius.circular(8),
-              imageUrlList: list,
+              children: List.generate(list.length, (index) => Image.asset(
+                list[index],
+                fit: BoxFit.cover,
+              ),),
               selectedIndicatorColor: Colors.red,
               withOutIndicator: true,
               scrollDirection: Axis.vertical,
@@ -189,7 +208,10 @@ class _HorizontalBannerScreenState extends State<HorizontalBannerScreen> {
               aspectRatio: 20 / 10,
               itemLength: list.length,
               borderRadius: BorderRadius.circular(8),
-              imageUrlList: list,
+              children: List.generate(list.length, (index) => Image.asset(
+                list[index],
+                fit: BoxFit.cover,
+              ),),
               selectedIndicatorColor: Colors.red,
               scrollDirection: Axis.vertical,
             ),
@@ -223,7 +245,10 @@ class _SliderScreenState extends State<SliderScreen> {
                   (MediaQuery.of(context).size.height),
               padding: const EdgeInsets.only(),
               itemLength: list.length,
-              imageUrlList: list,
+              children: List.generate(list.length, (index) => Image.asset(
+                list[index],
+                fit: BoxFit.cover,
+              ),),
               selectedIndicatorColor: Colors.red,
               autoPlay: false,
               withOutIndicator: true,

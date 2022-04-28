@@ -2,6 +2,8 @@
 
 A Flutter Banner widget.
 
+Website example >> https://bannerimage.mustafaturkmen.dev/
+
 ## Usage
 
 As simple as using any flutter Widget.
@@ -12,7 +14,7 @@ Add the module to your project ``pubspec.yaml``:
 ...
 dependencies:
  ...
- banner_image: ^1.0.5
+ banner_image: ^1.0.6
 ...
 ```
 And install it using ``flutter packages get`` on your project folder. After that, just import the module and use it:
