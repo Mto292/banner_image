@@ -5,7 +5,7 @@ import 'package:async/async.dart';
 abstract class BannerImageViewModel extends State<BannerImage> {
   late final PageController controller;
   late int previousIndex;
-  late RestartableTimer? _timer;
+  RestartableTimer? _timer;
   final ValueNotifier<int> valueListenable = ValueNotifier<int>(0);
 
   @override
@@ -25,14 +25,14 @@ abstract class BannerImageViewModel extends State<BannerImage> {
   @override
   void dispose() {
     controller.dispose();
-    _timer?.cancel();
+    if(_timer != null) _timer?.cancel();
     valueListenable.dispose();
     super.dispose();
   }
 
   void onPageChange(int value) {
     valueListenable.value = getIndex(value);
-    _timer?.reset();
+    if(_timer != null) _timer?.reset();
     if (widget.onPageChanged != null) {
       widget.onPageChanged!(valueListenable.value);
     }
