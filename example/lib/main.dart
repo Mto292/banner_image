@@ -21,13 +21,13 @@ class MyApp extends StatelessWidget {
 }
 
 final list = [
-  'assets/0.png',
-  'assets/1.png',
-  'assets/2.png',
-  'assets/3.png',
-  'assets/4.png',
-  'assets/5.png',
-  'assets/6.png'
+  'https://picsum.photos/600/200',
+  'https://picsum.photos/600/201',
+  'https://picsum.photos/600/202',
+  'https://picsum.photos/600/203',
+  'https://picsum.photos/600/205',
+  'https://picsum.photos/600/206',
+  'https://picsum.photos/600/207',
 ];
 
 class MyHomePage extends StatefulWidget {
@@ -51,24 +51,19 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => const BannerScreen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (_) => const BannerScreen()));
                 },
                 child: const Text('Banner Screen')),
             const SizedBox(height: 15),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (_) => const HorizontalBannerScreen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (_) => const HorizontalBannerScreen()));
                 },
                 child: const Text('Horizontal Banner Screen')),
             const SizedBox(height: 15),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => const SliderScreen()));
+                Navigator.push(context, MaterialPageRoute(builder: (_) => const SliderScreen()));
               },
               child: const Text("Slider Screen"),
             ),
@@ -100,12 +95,16 @@ class _BannerScreenState extends State<BannerScreen> {
               padding: const EdgeInsets.only(),
               itemLength: list.length,
               imageUrlList: list,
+              indicatorPosition: IndicatorPosition.on,
               selectedIndicatorColor: Colors.red,
               autoPlay: true,
-              children: List.generate(list.length, (index) => Image.asset(
-                list[index],
-                fit: BoxFit.cover,
-              ),),
+              children: List.generate(
+                list.length,
+                (index) => Image.network(
+                  list[index],
+                  fit: BoxFit.cover,
+                ),
+              ),
               onTap: (int index) {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content: Text('On Tap' + index.toString()),
@@ -115,10 +114,14 @@ class _BannerScreenState extends State<BannerScreen> {
             const SizedBox(height: 50),
             BannerImage(
               itemLength: list.length,
-              children: List.generate(list.length, (index) => Image.asset(
-                list[index],
-                fit: BoxFit.cover,
-              ),),
+              indicatorPosition: IndicatorPosition.under,
+              children: List.generate(
+                list.length,
+                (index) => Image.network(
+                  list[index],
+                  fit: BoxFit.cover,
+                ),
+              ),
               selectedIndicatorColor: Colors.red,
               autoPlay: true,
               borderRadius: BorderRadius.circular(8),
@@ -131,10 +134,13 @@ class _BannerScreenState extends State<BannerScreen> {
             const SizedBox(height: 50),
             BannerImage(
               itemLength: list.length,
-              children: List.generate(list.length, (index) => Image.asset(
-                list[index],
-                fit: BoxFit.cover,
-              ),),
+              children: List.generate(
+                list.length,
+                (index) => Image.network(
+                  list[index],
+                  fit: BoxFit.cover,
+                ),
+              ),
               borderRadius: BorderRadius.circular(8),
               selectedIndicatorColor: Colors.red,
               onTap: (int index) {
@@ -170,10 +176,14 @@ class _HorizontalBannerScreenState extends State<HorizontalBannerScreen> {
             BannerImage(
               padding: const EdgeInsets.only(),
               itemLength: list.length,
-              children: List.generate(list.length, (index) => Image.asset(
-                list[index],
-                fit: BoxFit.cover,
-              ),),
+              indicatorPosition: IndicatorPosition.on,
+              children: List.generate(
+                list.length,
+                (index) => Image.network(
+                  list[index],
+                  fit: BoxFit.cover,
+                ),
+              ),
               selectedIndicatorColor: Colors.red,
               autoPlay: true,
               scrollDirection: Axis.vertical,
@@ -181,10 +191,13 @@ class _HorizontalBannerScreenState extends State<HorizontalBannerScreen> {
             const SizedBox(height: 15),
             BannerImage(
               itemLength: list.length,
-              children: List.generate(list.length, (index) => Image.asset(
-                list[index],
-                fit: BoxFit.cover,
-              ),),
+              children: List.generate(
+                list.length,
+                (index) => Image.network(
+                  list[index],
+                  fit: BoxFit.cover,
+                ),
+              ),
               borderRadius: BorderRadius.circular(8),
               selectedIndicatorColor: Colors.blue,
               indicatorColor: Colors.green.shade100,
@@ -195,12 +208,15 @@ class _HorizontalBannerScreenState extends State<HorizontalBannerScreen> {
               aspectRatio: 2,
               itemLength: list.length,
               borderRadius: BorderRadius.circular(8),
-              children: List.generate(list.length, (index) => Image.asset(
-                list[index],
-                fit: BoxFit.cover,
-              ),),
+              children: List.generate(
+                list.length,
+                (index) => Image.network(
+                  list[index],
+                  fit: BoxFit.cover,
+                ),
+              ),
               selectedIndicatorColor: Colors.red,
-              withOutIndicator: true,
+              indicatorPosition: IndicatorPosition.on,
               scrollDirection: Axis.vertical,
             ),
             const SizedBox(height: 15),
@@ -208,10 +224,13 @@ class _HorizontalBannerScreenState extends State<HorizontalBannerScreen> {
               aspectRatio: 20 / 10,
               itemLength: list.length,
               borderRadius: BorderRadius.circular(8),
-              children: List.generate(list.length, (index) => Image.asset(
-                list[index],
-                fit: BoxFit.cover,
-              ),),
+              children: List.generate(
+                list.length,
+                (index) => Image.network(
+                  list[index],
+                  fit: BoxFit.cover,
+                ),
+              ),
               selectedIndicatorColor: Colors.red,
               scrollDirection: Axis.vertical,
             ),
@@ -241,17 +260,19 @@ class _SliderScreenState extends State<SliderScreen> {
         child: Column(
           children: [
             BannerImage(
-              aspectRatio: MediaQuery.of(context).size.width /
-                  (MediaQuery.of(context).size.height),
+              aspectRatio: MediaQuery.of(context).size.width / (MediaQuery.of(context).size.height),
               padding: const EdgeInsets.only(),
               itemLength: list.length,
-              children: List.generate(list.length, (index) => Image.asset(
-                list[index],
-                fit: BoxFit.cover,
-              ),),
+              children: List.generate(
+                list.length,
+                (index) => Image.network(
+                  list[index],
+                  fit: BoxFit.cover,
+                ),
+              ),
               selectedIndicatorColor: Colors.red,
               autoPlay: false,
-              withOutIndicator: true,
+              indicatorPosition: IndicatorPosition.on,
               fit: BoxFit.scaleDown,
             ),
           ],
