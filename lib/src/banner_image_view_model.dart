@@ -12,7 +12,11 @@ abstract class BannerImageViewModel extends State<BannerImage> {
   void initState() {
     super.initState();
     final length = 1000 * widget.itemLength;
-    controller = PageController(initialPage: length);
+    controller = PageController(
+      initialPage: length,
+      viewportFraction: widget.viewportFraction,
+      keepPage: widget.keepPage,
+    );
     previousIndex = length;
     if (widget.autoPlay) {
       _timer = RestartableTimer(
@@ -25,14 +29,14 @@ abstract class BannerImageViewModel extends State<BannerImage> {
   @override
   void dispose() {
     controller.dispose();
-    if(_timer != null) _timer?.cancel();
+    if (_timer != null) _timer?.cancel();
     valueListenable.dispose();
     super.dispose();
   }
 
   void onPageChange(int value) {
     valueListenable.value = getIndex(value);
-    if(_timer != null) _timer?.reset();
+    if (_timer != null) _timer?.reset();
     if (widget.onPageChanged != null) {
       widget.onPageChanged!(valueListenable.value);
     }
@@ -52,6 +56,3 @@ abstract class BannerImageViewModel extends State<BannerImage> {
     return d == -1 ? 0 : d;
   }
 }
-
-
-

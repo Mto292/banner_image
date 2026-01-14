@@ -28,6 +28,8 @@ class BannerImage extends StatefulWidget {
   final ImageErrorWidgetBuilder? errorBuilder;
   final ImageLoadingBuilder? loadingBuilder;
   final ScrollPhysics? physics;
+  final bool keepPage;
+  final double viewportFraction;
 
   const BannerImage({
     Key? key,
@@ -54,6 +56,8 @@ class BannerImage extends StatefulWidget {
     this.errorBuilder,
     this.loadingBuilder,
     this.physics,
+    this.keepPage = true,
+    this.viewportFraction = 1.0,
   })  : assert(imageUrlList != null || children != null,
             'At least one of the imageUrlList or children parameters must be filled.'),
         super(key: key);
