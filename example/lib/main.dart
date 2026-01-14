@@ -21,6 +21,8 @@ class MyApp extends StatelessWidget {
 }
 
 final list = [
+  'https://image.adsoftheworld.com/1rcedffm96g0k32jxzhiu2zzaa9h',
+  'https://image.adsoftheworld.com/g846bj6eq0jpd2ia60gtls2gl1tr',
   'https://picsum.photos/600/200',
   'https://picsum.photos/600/201',
   'https://picsum.photos/600/202',
@@ -91,7 +93,7 @@ class _BannerScreenState extends State<BannerScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            BannerImage(
+            BannerImage.builder(
               padding: const EdgeInsets.only(),
               itemLength: list.length,
               imageUrlList: list,
@@ -133,15 +135,27 @@ class _BannerScreenState extends State<BannerScreen> {
             ),
             const SizedBox(height: 50),
             BannerImage(
+              padEnds: false,
+              autoPlay: false,
               itemLength: list.length,
+              viewportFraction: 0.8,
               children: List.generate(
                 list.length,
-                (index) => Image.network(
-                  list[index],
-                  fit: BoxFit.cover,
+                (index) => Padding(
+                  padding: const EdgeInsets.only(right: 16),
+                  child: AspectRatio(
+                    aspectRatio: 285 / 136,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.network(
+                        list[index],
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
                 ),
               ),
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: const BorderRadius.only(),
               selectedIndicatorColor: Colors.red,
               onTap: (int index) {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(

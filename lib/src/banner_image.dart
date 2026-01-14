@@ -7,9 +7,16 @@ enum IndicatorPosition { none, on, under }
 class BannerImage extends StatefulWidget {
   final double? aspectRatio;
   final ValueChanged<int>? onPageChanged;
+
+  // PageView
   final List<Widget>? children;
+
+  // PageView.builder
+  final IndexedWidgetBuilder? itemBuilder;
+
   final List<String>? imageUrlList;
   final int itemLength;
+
   final IndicatorPosition indicatorPosition;
   final Color? selectedIndicatorColor;
   final Color? indicatorColor;
@@ -29,15 +36,20 @@ class BannerImage extends StatefulWidget {
   final ImageLoadingBuilder? loadingBuilder;
   final ScrollPhysics? physics;
   final bool keepPage;
+  final bool padEnds;
   final double viewportFraction;
 
+  final bool isBuilder;
+  final bool endlessPages;
+
+  /// Normal constructor → PageView
   const BannerImage({
     Key? key,
     required this.itemLength,
-    this.aspectRatio,
-    this.onPageChanged,
     this.children,
     this.imageUrlList,
+    this.aspectRatio,
+    this.onPageChanged,
     this.indicatorPosition = IndicatorPosition.none,
     this.selectedIndicatorColor,
     this.indicatorColor,
@@ -57,9 +69,47 @@ class BannerImage extends StatefulWidget {
     this.loadingBuilder,
     this.physics,
     this.keepPage = true,
+    this.padEnds = true,
     this.viewportFraction = 1.0,
-  })  : assert(imageUrlList != null || children != null,
-            'At least one of the imageUrlList or children parameters must be filled.'),
+  })  : isBuilder = false,
+        endlessPages = false,
+        itemBuilder = null,
+        assert(children != null || imageUrlList != null),
+        super(key: key);
+
+  /// Builder constructor → PageView.builder
+  const BannerImage.builder({
+    Key? key,
+    required this.itemLength,
+    this.itemBuilder,
+    this.children,
+    this.imageUrlList,
+    this.aspectRatio,
+    this.onPageChanged,
+    this.indicatorPosition = IndicatorPosition.none,
+    this.selectedIndicatorColor,
+    this.indicatorColor,
+    this.borderRadius,
+    this.padding,
+    this.indicatorPadding = const EdgeInsets.symmetric(vertical: 8),
+    this.fit,
+    this.duration,
+    this.timerDuration,
+    this.curve,
+    this.indicatorRadius,
+    this.autoPlay = false,
+    this.scrollDirection = Axis.horizontal,
+    this.onTap,
+    this.clipBehavior,
+    this.errorBuilder,
+    this.loadingBuilder,
+    this.physics,
+    this.keepPage = true,
+    this.padEnds = true,
+    this.viewportFraction = 1.0,
+    this.endlessPages = true,
+  })  : isBuilder = true,
+        assert(itemBuilder != null || imageUrlList != null || children != null),
         super(key: key);
 
   @override

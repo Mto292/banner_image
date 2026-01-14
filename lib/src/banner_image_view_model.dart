@@ -5,17 +5,32 @@ import 'package:async/async.dart';
 abstract class BannerImageViewModel extends State<BannerImage> {
   late final PageController controller;
   late int previousIndex;
+  late final Widget Function(BuildContext context, int index) getItem;
+
   RestartableTimer? _timer;
   final ValueNotifier<int> valueListenable = ValueNotifier<int>(0);
 
   @override
   void initState() {
     super.initState();
-    final length = 1000 * widget.itemLength;
+    if (widget.itemBuilder != null) {
+      getItem = (context, index) => widget.itemBuilder!.call(context, index);
+    } else if (widget.children != null) {
+      getItem = (context, index) => widget.children![index];
+    } else {
+      getItem = (context, index) => Image.network(
+            widget.imageUrlList![index],
+            fit: widget.fit ?? BoxFit.cover,
+            errorBuilder: widget.errorBuilder,
+            loadingBuilder: widget.loadingBuilder,
+          );
+    }
+
+    final length = widget.endlessPages ? 1000 * widget.itemLength : 0;
     controller = PageController(
       initialPage: length,
-      viewportFraction: widget.viewportFraction,
       keepPage: widget.keepPage,
+      viewportFraction: widget.viewportFraction,
     );
     previousIndex = length;
     if (widget.autoPlay) {
@@ -35,7 +50,8 @@ abstract class BannerImageViewModel extends State<BannerImage> {
   }
 
   void onPageChange(int value) {
-    valueListenable.value = getIndex(value);
+    final valuee = getIndex(value);
+    valueListenable.value = getIndex(valuee);
     if (_timer != null) _timer?.reset();
     if (widget.onPageChanged != null) {
       widget.onPageChanged!(valueListenable.value);
@@ -43,10 +59,18 @@ abstract class BannerImageViewModel extends State<BannerImage> {
   }
 
   void nextPage() {
-    controller.nextPage(
-      duration: widget.duration ?? const Duration(milliseconds: 300),
-      curve: widget.curve ?? Curves.linear,
-    );
+    if (controller.page == widget.itemLength - 1) {
+      controller.animateTo(
+        0,
+        duration: widget.duration ?? const Duration(milliseconds: 300),
+        curve: widget.curve ?? Curves.linear,
+      );
+    } else {
+      controller.nextPage(
+        duration: widget.duration ?? const Duration(milliseconds: 300),
+        curve: widget.curve ?? Curves.linear,
+      );
+    }
   }
 
   int getIndex(int value) {
