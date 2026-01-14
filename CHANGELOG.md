@@ -1,3 +1,8 @@
+## 1.1.1
+feat: BannerImage.builder added (PageView.builder support)
+refactor: BannerImage now conditionally uses PageView or PageView.builder
+improvement: API aligned with Flutter ListView / ListView.builder pattern
+
 ## 1.1.0
 feat: viewportFraction added
 
