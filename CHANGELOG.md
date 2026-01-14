@@ -1,3 +1,6 @@
+## 1.1.2
+bug fix
+
 ## 1.1.1
 feat: BannerImage.builder added (PageView.builder support)
 refactor: BannerImage now conditionally uses PageView or PageView.builder

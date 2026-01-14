@@ -100,6 +100,7 @@ class _BannerScreenState extends State<BannerScreen> {
               indicatorPosition: IndicatorPosition.on,
               selectedIndicatorColor: Colors.red,
               autoPlay: true,
+              endlessPages: false,
               children: List.generate(
                 list.length,
                 (index) => Image.network(
@@ -134,9 +135,10 @@ class _BannerScreenState extends State<BannerScreen> {
               },
             ),
             const SizedBox(height: 50),
-            BannerImage(
+            BannerImage.builder(
               padEnds: false,
               autoPlay: false,
+              endlessPages: false,
               itemLength: list.length,
               viewportFraction: 0.8,
               children: List.generate(

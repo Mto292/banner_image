@@ -4,7 +4,6 @@ import 'package:async/async.dart';
 
 abstract class BannerImageViewModel extends State<BannerImage> {
   late final PageController controller;
-  late int previousIndex;
   late final Widget Function(BuildContext context, int index) getItem;
 
   RestartableTimer? _timer;
@@ -26,13 +25,11 @@ abstract class BannerImageViewModel extends State<BannerImage> {
           );
     }
 
-    final length = widget.endlessPages ? 1000 * widget.itemLength : 0;
     controller = PageController(
-      initialPage: length,
+      initialPage: widget.endlessPages ? 1000 * widget.itemLength : 0,
       keepPage: widget.keepPage,
       viewportFraction: widget.viewportFraction,
     );
-    previousIndex = length;
     if (widget.autoPlay) {
       _timer = RestartableTimer(
         widget.timerDuration ?? const Duration(seconds: 5),
@@ -50,8 +47,7 @@ abstract class BannerImageViewModel extends State<BannerImage> {
   }
 
   void onPageChange(int value) {
-    final valuee = getIndex(value);
-    valueListenable.value = getIndex(valuee);
+    valueListenable.value = getIndex(value);
     if (_timer != null) _timer?.reset();
     if (widget.onPageChanged != null) {
       widget.onPageChanged!(valueListenable.value);

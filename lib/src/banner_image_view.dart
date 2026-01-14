@@ -89,6 +89,7 @@ class BannerImageView extends BannerImageViewModel {
   Widget _buildPageView() {
     if (widget.isBuilder) {
       return PageView.builder(
+        itemCount: widget.endlessPages ? null : widget.itemLength,
         controller: controller,
         physics: widget.physics,
         scrollDirection: widget.scrollDirection,
