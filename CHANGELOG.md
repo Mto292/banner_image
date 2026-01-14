@@ -1,3 +1,6 @@
+## 1.1.0
+feat: viewportFraction added
+
 ## 1.0.9
 feat
 
